@@ -95,7 +95,7 @@ public class App {
 	void checkValues(){
 		while(!exit) {
 			userHand.getHandValue();
-			dealerHand.getDealerHandValue();
+			dealerHand.getNoPrintHandValue();
 			if (userHand.isBlackjack() && dealerHand.isBlackjack()) {
 				System.out.println("You both have 21! Draw!");
 				start();
@@ -162,7 +162,7 @@ public class App {
 
 	void dealerCheckValues(){
 		while(!exit){
-			dealerHand.getHandValue();
+			dealerHand.getNoPrintHandValue();
 			if(dealerHand.isBlackjack()){
 				System.out.println("House Wins!");
 				System.out.println("The dealer's hand.");
@@ -175,13 +175,13 @@ public class App {
 				dealerHand.print();
 				start();
 			}
-			if((dealerHand.getHandValue() >= userHand.getHandValue()) && !dealerHand.isBusted()){
+			if((dealerHand.getNoPrintHandValue() >= userHand.getNoPrintHandValue()) && !dealerHand.isBusted()){
 				System.out.println("House Wins!");
 				System.out.println("The dealer's hand.");
 				dealerHand.print();
 				start();
 			}
-			if((dealerHand.getHandValue() < userHand.getHandValue()) && !dealerHand.isBusted()){
+			if((dealerHand.getNoPrintHandValue() < userHand.getNoPrintHandValue()) && !dealerHand.isBusted()){
 				System.out.println("The dealer is dealt a card.");
 				printCard(0);
 				dealerHand.addCard(deck.cards.get(0));

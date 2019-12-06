@@ -44,7 +44,7 @@ public class BlackjackHand extends AbstractHand{
 		return sum;
 	}//method
 
-	int getDealerHandValue() {
+	int getNoPrintHandValue() {
 		sum = 0;
 		sumSoft = 0;
 		int count = 0;
