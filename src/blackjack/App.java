@@ -1,5 +1,6 @@
 package blackjack;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -14,7 +15,6 @@ public class App {
 
 	public void start() {
 		while( !exit) {
-			this.input = new Scanner(System.in);
 			System.out.println();
 			System.out.println("Let's play blackjack!");
 			this.deck = new Deck();
@@ -28,6 +28,7 @@ public class App {
 
 	public void menu(){
 		while(!exit) {
+			this.input = new Scanner(System.in);
 			System.out.println();
 			System.out.println("1. If you want to see that the decks are being shuffled, two shuffled decks will be printed to the terminal.");
 			System.out.println("2. Play Blackjack!");
@@ -36,6 +37,9 @@ public class App {
 			try {
 				choice = input.nextInt();
 			} catch (NumberFormatException e) {
+				menu();
+			}
+			catch(InputMismatchException e) {
 				menu();
 			}
 			if (choice < 1 || choice > 3) {
@@ -74,6 +78,7 @@ public class App {
 
 	void choice2(){
 		while(!exit){
+			deck.shuffle();
 			System.out.println("You are dealt two cards.");
 			printCard(0);
 			userHand.addCard(deck.cards.get(0));
@@ -151,10 +156,6 @@ public class App {
 			}
 			if(choice == 2){
 				System.out.println("You stay.");
-				System.out.println("The dealer is dealt a card.");
-				printCard(0);
-				dealerHand.addCard(deck.cards.get(0));
-				deck.dealCard();
 				dealerCheckValues();
 			}
 		}//while
