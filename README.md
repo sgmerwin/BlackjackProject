@@ -8,7 +8,7 @@ The Deck class has an array list of cards and methods to create a deck, shuffle,
 There is an abstract class AbstractHand that has a field for an array list of cards and three abstract methods: addCard, clear, and print.<br>
 The BlackjackHand class extends AbstractHand and use three additional fields count, sum and sumSoft as well as four additional methods: getHandValue, getNoPrintHandValue, isBlackJack, and isBusted.<br>
 The sum will add an ace as 11. The sumSoft will add an ace as 1.<br>
-This works well for 1 ace. If a hand has 2, 3,or 4 aces this system would have to be expanded for all of the possible combinations to be considered. So as it is, 2 aces would be added to the sumSoft as 2 ones and added to the sum as 2 elevens. If sum is greater than 21 the program uses the sumSoft.<br>
+This works well for 1 ace. If a hand has 2, 3, or 4 aces this system would have to be expanded for all of the possible combinations to be considered. So as it is, 2 aces would be added to the sumSoft as 2 ones and added to the sum as 2 elevens. If sum is greater than 21 the program uses the sumSoft.<br>
 There is a count field that keeps track of the aces in the hand. Right now this just controls If the sumSoft value should be printed.<br>
 This logic could be expanded with addition integer fileds to keep track of all possible cases for multiple aces.<br>
 There are points in the program where the hand sums need to be calculated and checked but the not always with a printout. That is why there is a getHandValue and a getNoPrintHandValue.<br>
