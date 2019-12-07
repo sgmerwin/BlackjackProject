@@ -19,7 +19,7 @@ App has a start method that is called in main. The start method creates the deck
 The menu has an option to show that the deck is being shuffled. In the assignment there was a comment about printing a shuffled deck to the screen. To prove the deck does shuffle, two shuffled decks can be printed. When the game is started the deck is reshuffled again.<br>
 When the player chooses to play blackjack two cards are dealt to the player and two cards are dealt to the dealer. One of the dealer's cards always stays face down. When the player chooses to stay, the dealer has to take a hit if the dealer's sum is less than 17.<br>
 The App class has a checkValues method for the player and a dealerCheckValues method for the dealer. <br>
-The dealer's and and the player's hand are printed at the end of a game.<br>
+The dealer's hand and the player's hand are printed at the end of a game.<br>
 At the end of the game the App's start method is called again which makes a new deck and new hands. <br>
 So this is a one player blackjack game that deals with one ace correctly.<br>
 
