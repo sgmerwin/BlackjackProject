@@ -229,7 +229,6 @@ public class App {
 
 	void choice3(){
 		this.exit = true;
-		input.close();
 	}
 
 	public void printCard(int i){
