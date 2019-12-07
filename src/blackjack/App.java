@@ -37,13 +37,13 @@ public class App {
 			try {
 				choice = input.nextInt();
 			} catch (NumberFormatException e) {
-				menu();
+				continue;
 			}
 			catch(InputMismatchException e) {
-				menu();
+				continue;
 			}
 			if (choice < 1 || choice > 3) {
-				menu();
+				continue;
 			}
 			if (choice == 1) {
 				choice1();
@@ -103,25 +103,43 @@ public class App {
 			dealerHand.getNoPrintHandValue();
 			if (userHand.isBlackjack() && dealerHand.isBlackjack()) {
 				System.out.println("You both have 21! Draw!");
+				System.out.println("Your hand.");
+				userHand.print();
+				System.out.println("The dealer's hand.");
+				dealerHand.print();
 				start();
 			}
 			if (userHand.isBlackjack() && !dealerHand.isBlackjack()) {
 				System.out.println("Blackjack!");
+				System.out.println("Your hand.");
+				userHand.print();
+				System.out.println("The dealer's hand.");
+				dealerHand.print();
 				start();
 			}
 			if (!userHand.isBlackjack() && dealerHand.isBlackjack()) {
 				System.out.println("House wins!");
 				System.out.println("The dealer's hand.");
 				dealerHand.print();
+				System.out.println("Your hand.");
+				userHand.print();
 				start();
 			}
 			if(userHand.isBusted() && !dealerHand.isBusted()){
 				System.out.println("Your busted!");
+				System.out.println("Your hand.");
+				userHand.print();
+				System.out.println("The dealer's hand.");
+				dealerHand.print();
 				start();
 			}
 			if(!userHand.isBusted() && dealerHand.isBusted()){
 				System.out.println("The house is busted!");
 				System.out.println("You win!");
+				System.out.println("Your hand.");
+				userHand.print();
+				System.out.println("The dealer's hand.");
+				dealerHand.print();
 				start();
 			}
 			if ((!userHand.isBlackjack() && !dealerHand.isBlackjack()) && (!userHand.isBusted() && !dealerHand.isBusted())) {
@@ -136,15 +154,19 @@ public class App {
 
 	void playHand(){
 		while(!exit){
+			this.input = new Scanner(System.in);
 			System.out.println("Would you like to hit or stay?");
 			System.out.println("Enter 1 for a hit and 2 to stay.");
 			try {
 				choice = input.nextInt();
 			} catch (NumberFormatException e) {
-				playHand();
+				continue;
+			}
+			catch(InputMismatchException e) {
+				continue;
 			}
 			if(choice < 1 || choice > 2){
-				playHand();
+				continue;
 			}
 			if(choice == 1){
 				System.out.println("You take a hit.");
@@ -168,18 +190,31 @@ public class App {
 				System.out.println("House Wins!");
 				System.out.println("The dealer's hand.");
 				dealerHand.print();
+				System.out.println("Your hand.");
+				userHand.print();
 				start();
 			}
 			if(dealerHand.isBusted()){
 				System.out.println("The house is busted!");
 				System.out.println("The dealer's hand.");
 				dealerHand.print();
+				System.out.println("Your hand.");
+				userHand.print();
 				start();
+			}
+			if(dealerHand.getNoPrintHandValue() < 17){
+				System.out.println("The dealer is dealt a card.");
+				printCard(0);
+				dealerHand.addCard(deck.cards.get(0));
+				deck.dealCard();
+				continue;
 			}
 			if((dealerHand.getNoPrintHandValue() >= userHand.getNoPrintHandValue()) && !dealerHand.isBusted()){
 				System.out.println("House Wins!");
 				System.out.println("The dealer's hand.");
 				dealerHand.print();
+				System.out.println("Your hand.");
+				userHand.print();
 				start();
 			}
 			if((dealerHand.getNoPrintHandValue() < userHand.getNoPrintHandValue()) && !dealerHand.isBusted()){
@@ -187,13 +222,14 @@ public class App {
 				printCard(0);
 				dealerHand.addCard(deck.cards.get(0));
 				deck.dealCard();
-				dealerCheckValues();
+				continue;
 			}//if
 		}//while
 	}//method
 
 	void choice3(){
 		this.exit = true;
+		input.close();
 	}
 
 	public void printCard(int i){

@@ -6,7 +6,7 @@ public class BlackjackHand extends AbstractHand{
 
 	private int sum;
 	private int sumSoft;
-
+	
 	public BlackjackHand() {
 		this.hand = new ArrayList<Card>();
 	}
@@ -92,7 +92,7 @@ public class BlackjackHand extends AbstractHand{
 	@Override
 	void print() {
 		for(Card i : this.hand) {
-			System.out.println(i.suit.toString() + " " + i.rank.toString());
+			System.out.println(i.suit.name()+" "+i.rank.name());
 		}
 	}//method
 
